@@ -12,11 +12,12 @@ interface Props {
 
 const ArticleContent: React.FC<Props> = (props) => {
   let { data } = props,
-    { title, created_at, content } = data
+    { title, created_at, content, tags } = data
   return (
     <ArticleConent className="expandUp ">
       <Typography>
         <Title>{title}</Title>
+        <Title> {tags}</Title>
         <WriteTime>{created_at}</WriteTime>
         <Paragraph
           style={{ fontSize: '18px', fontWeight: 'bold', color: '#fff' }}

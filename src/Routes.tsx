@@ -1,10 +1,12 @@
 import * as React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 // import { Global } from '@emotion/core'
 
 import Roots from './components/layout/Roots'
 import Nav from './components/Nav'
 import Home from './pages/Home/Home'
+import FooterConent from './components/Footer'
+import Artile from './pages/Artile/Artile'
 // import Header from './components/layout/Header'
 // import IndexPage from './pages/index'
 // import HeroesPage from './pages/heroes'
@@ -26,8 +28,9 @@ const Routes: React.SFC = () => (
     <Nav />
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route component={() => <div>Not Found</div>} />
+      <Route path="/article" component={Artile} />
     </Switch>
+    <FooterConent />
   </Roots>
 )
 
