@@ -12,18 +12,18 @@ interface Props {
 
 const ArticleContent: React.FC<Props> = (props) => {
   let { data } = props,
-    { title, created_at, content, tags } = data
+    { title, created_at, category, summary } = data
   return (
     <ArticleConent className="expandUp ">
       <Typography>
         <Title>{title}</Title>
-        <Title> {tags}</Title>
+        <Title> {category}</Title>
         <WriteTime>{created_at}</WriteTime>
         <Paragraph
           style={{ fontSize: '18px', fontWeight: 'bold', color: '#fff' }}
           ellipsis={{ rows: 7 }}
           type="secondary">
-          {content}
+          {summary}
         </Paragraph>
         <Link to="/courese" style={{ display: 'block', textAlign: 'right' }}>
           <Button type="link">阅读原文</Button>

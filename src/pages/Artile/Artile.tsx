@@ -65,20 +65,20 @@ class App extends Component<ComponentProps, State> {
           <Route
             path="/article/javascript"
             render={() => (
-              <BlogShow data={data.filter((item) => item.tags === this.state.current)} />
+              <BlogShow data={data.filter((item) => item.category === this.state.current)} />
             )}
           />
           <Route
             path="/article/css"
             render={() => {
               console.log(this.state.current)
-              return <BlogShow data={data.filter((item) => item.tags === this.state.current)} />
+              return <BlogShow data={data.filter((item) => item.category === this.state.current)} />
             }}
           />
           <Route
             path="/article/notes"
             render={() => (
-              <BlogShow data={data.filter((item) => item.tags === this.state.current)} />
+              <BlogShow data={data.filter((item) => item.category === this.state.current)} />
             )}
           />
           <Redirect from="/article" to="/article/all" />

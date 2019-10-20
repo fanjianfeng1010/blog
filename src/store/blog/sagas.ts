@@ -10,6 +10,7 @@ function* handleFetch() {
     if (res.error) {
       yield put(fetchError(res.error))
     } else {
+      console.log('success')
       yield put(fetchSuccess(res.data))
     }
   } catch (err) {

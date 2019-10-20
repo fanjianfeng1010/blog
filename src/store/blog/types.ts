@@ -1,19 +1,13 @@
 export interface Blog extends ApiResponse {
-  id: number
-  title: string
-  summary: string
-  content: string
-  tags: string
-  created_at: string
-  updated_at: string
-  user: {
-    id: number
-    username: string
-    authority: {
-      id: number
-      name: string
-    }
-  }
+  readonly _id: string
+  readonly title: string
+  readonly content: string
+  readonly summary: string
+  readonly category: string
+  readonly commentCount?: number
+  readonly viewsCount?: number
+  readonly createdAt?: string | Date
+  readonly tags?: string[]
 }
 
 export interface Dataresponse {

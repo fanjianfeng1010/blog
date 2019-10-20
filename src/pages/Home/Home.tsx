@@ -31,7 +31,7 @@ class App extends Component<ComponentProps> {
           <div>最新文章</div>
           {data && data.length !== 0
             ? data.map((item) => {
-                return <ArticleTitle data={item} key={item.id} />
+                return <ArticleTitle data={item} key={item._id} />
               })
             : ''}
         </Sider>
@@ -42,14 +42,14 @@ class App extends Component<ComponentProps> {
                 <LazyLoad debounce={true} height={200} offset={200}>
                   {data && data.length !== 0
                     ? data.map((item) => (
-                        <Col key={item.id} xs={24} xl={24}>
+                        <Col key={item._id} xs={24} xl={24}>
                           <Article data={item} />
                         </Col>
                       ))
                     : ''}
                   {data && data.length !== 0
                     ? data.map((item) => (
-                        <Col key={item.id} xs={24} xl={24}>
+                        <Col key={item._id} xs={24} xl={24}>
                           <Article data={item} />
                         </Col>
                       ))

@@ -11,20 +11,20 @@ type PropFromMap = {
 
 const ArticleTitle: FC<PropFromMap> = (props) => {
   let { data } = props,
-    { title, tags } = data
+    { title, category } = data
   return (
     <div style={{ width: '50%', margin: '10% auto', borderBottom: '1px solid #000' }}>
       <Tag
         color={
-          tags === 'javascript'
+          category === 'javascript'
             ? 'magenta'
-            : tags === 'css'
+            : category === 'css'
             ? 'red'
-            : tags === 'react'
+            : category === 'react'
             ? 'volcano'
             : 'green'
         }>
-        {tags}
+        {category}
       </Tag>
       <h3 style={{ display: 'inline-block' }}>{title}</h3>
     </div>
