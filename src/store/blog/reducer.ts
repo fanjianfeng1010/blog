@@ -16,8 +16,6 @@ const reducer: Reducer<BlogState> = (state = initialState, action) => {
       return { ...state, loading: true }
     }
     case BlogActionTypes.FETCH_SUCCESS: {
-      let itemAry = action.payload.map((item: any) => item._id)
-      console.log(itemAry)
       return { ...state, loading: false, data: action.payload }
     }
     case BlogActionTypes.FETCH_ERROR: {

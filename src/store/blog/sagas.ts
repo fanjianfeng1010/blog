@@ -1,17 +1,18 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
 import { BlogActionTypes } from './types'
 import { fetchError, fetchSuccess } from './action'
-import { getArtile } from '../../api/blog'
+import { getArticles } from '../../api/blog'
 
-function* handleFetch() {
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'https://localhost:8080'
+
+function* handleFetch(param: any) {
   try {
     // To call async functions, use redux-saga's `call()`.
-    const res = yield call(getArtile)
+    const res = yield call(getArticles, param.page, param.limit, param.category, param.tag)
     if (res.error) {
       yield put(fetchError(res.error))
     } else {
-      console.log('success')
-      yield put(fetchSuccess(res.data))
+      yield put(fetchSuccess(res.data.items))
     }
   } catch (err) {
     if (err instanceof Error && err.stack) {
