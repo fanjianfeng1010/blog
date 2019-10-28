@@ -4,22 +4,18 @@ export interface ResponseData<T> {
   data: T
 }
 
-export interface Blog extends ApiResponse {
+export interface Category extends ApiResponse {
   readonly _id: string
-  readonly title: string
-  readonly content: string
-  readonly summary: string
-  readonly category: string
-  readonly commentCount?: number
-  readonly viewsCount?: number
-  readonly createdAt?: string | Date
-  readonly tags?: string[]
+  readonly name: string
+  readonly createdAt: string
+  readonly updatedAt: string
+  readonly articleCount: number
 }
 
 export interface Dataresponse {
   code: number
   msg: string
-  data: ResponseData<Blog[]>
+  data: ResponseData<Category[]>
 }
 
 // This type is basically shorthand for `{ [key: string]: any }`. Feel free to replace `any` with
@@ -32,17 +28,16 @@ export type ApiResponse = Record<string, any>
 // Define however naming conventions you'd like for your action types, but
 // personally, I use the `@@context/ACTION_TYPE` convention, to follow the convention
 // of Redux's `@@INIT` action.
-export enum BlogActionTypes {
-  FETCH_REQUEST = '@@blog/FETCH_REQUEST',
-  FETCH_SUCCESS = '@@blog/FETCH_SUCCESS',
-  FETCH_ERROR = '@@blog/FETCH_ERROR',
-  GET_CURRENT_READING = '@@blog/GET_CURRENT_READING'
+export enum categoryActionTypes {
+  FETCH_REQUEST = '@@category/FETCH_REQUEST',
+  FETCH_SUCCESS = '@@category/FETCH_SUCCESS',
+  FETCH_ERROR = '@@category/FETCH_ERROR'
 }
 
 // Declare state types with `readonly` modifier to get compile time immutability.
 // https://github.com/piotrwitek/react-redux-typescript-guide#state-with-type-level-immutability
-export interface BlogState {
+export interface CategoryState {
   readonly loading: boolean
-  readonly data: Blog[]
+  readonly data: Category[]
   readonly errors?: string
 }

@@ -1,14 +1,21 @@
 import React from 'react'
-import { Provider } from 'react-redux'
+// 第三方库
 import { Store } from 'redux'
-import { ConnectedRouter } from 'connected-react-router'
 import { History } from 'history'
-import { hot } from 'react-hot-loader'
-import { ApplicationState } from './store/inex'
-import Routes from './Routes'
 import { ConfigProvider } from 'antd'
+import { Provider } from 'react-redux'
 import zhCN from 'antd/es/locale/zh_CN'
+import { ConnectedRouter } from 'connected-react-router'
 
+// 开发插件
+import { hot } from 'react-hot-loader'
+
+// 自己写的文件
+import Routes from './Routes'
+import { ApplicationState } from './store/inex'
+import { Globalstyle } from './style'
+
+// Main 组件的属性
 interface MainProps {
   store: Store<ApplicationState>
   history: History
@@ -16,9 +23,11 @@ interface MainProps {
 
 const App: React.FC<MainProps> = ({ store, history }) => {
   return (
+    // 使用 antd 本地化配置
     <ConfigProvider locale={zhCN}>
       <Provider store={store}>
         <ConnectedRouter history={history}>
+          <Globalstyle />
           <Routes />
         </ConnectedRouter>
       </Provider>

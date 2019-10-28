@@ -6,7 +6,6 @@ import configureStore from './configStore'
 import { createBrowserHistory } from 'history'
 
 import 'antd/dist/antd.css' // or 'antd/dist/antd.less'
-import './index.less'
 
 const initialState = window.INITIAL_REDUX_STATE
 const history = createBrowserHistory()
