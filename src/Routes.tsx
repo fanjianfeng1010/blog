@@ -11,7 +11,7 @@ import Article from './pages/article'
 import About from './pages/about'
 import BlogContent from './pages/article/Blog'
 import BlogEditor from './pages/article/BlogEditor'
-import Admin from './pages/admin'
+import Admin from './pages/admin/Admin'
 
 import './index.less'
 

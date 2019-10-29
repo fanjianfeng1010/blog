@@ -33,7 +33,7 @@ class ArticleList extends Component<ComponentProps> {
           }}
           footer={
             <div>
-              <b>ant design</b> footer part
+              <b>呀,一不小心就拉倒末尾了</b>
             </div>
           }
           renderItem={(item: Blog) => (

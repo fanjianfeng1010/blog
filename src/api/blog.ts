@@ -11,9 +11,11 @@ export const deleteArticleById = (id: string) => axios.delete(`/api/article/${id
 
 // 批量删除文章
 export const batchDeleteArticle = (articleIds: string[]) => {
+  // let ids = Qs.stringify(articleIds, { indices: false })
+  // let articleIds = Qs.stringify(ids, { indices: false })
   console.log(articleIds)
   return axios.delete('/api/articles', {
-    data: { articleIds: articleIds }
+    data: { articleIds }
   })
 }
 
@@ -29,9 +31,11 @@ export const getArticles = (page: number, limit: number, category?: string, tag?
   })
 
 // 获取单篇文章
-export const getArticle = (id: string, markdownMode: boolean) =>
+export const getArticle = (id: string, md = false) =>
   axios.get(`/api/article/${id}`, {
-    params: markdownMode
+    params: {
+      md
+    }
   })
 
 // 获取所有分类

@@ -120,8 +120,7 @@
     "@types/markdown-it": "^0.0.9",
     "@types/qs": "^6.5.3",
     "less": "^3.10.3",
-    "less-loader": "^5.0.0",
-    "react-hot-loader": "^4.12.15"
+    "less-loader": "^5.0.0"
   },
   "jest": {
     "roots": [

@@ -7,9 +7,6 @@ import { Provider } from 'react-redux'
 import zhCN from 'antd/es/locale/zh_CN'
 import { ConnectedRouter } from 'connected-react-router'
 
-// 开发插件
-import { hot } from 'react-hot-loader'
-
 // 自己写的文件
 import Routes from './Routes'
 import { ApplicationState } from './store/inex'
@@ -34,4 +31,4 @@ const App: React.FC<MainProps> = ({ store, history }) => {
     </ConfigProvider>
   )
 }
-export default hot(module)(App)
+export default App

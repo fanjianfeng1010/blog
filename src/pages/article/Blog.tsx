@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Card, Divider, Icon, Tag, message, BackTop, Spin } from 'antd'
+
+import { Card, Divider, Icon, Tag, message, BackTop } from 'antd'
 import ReactMarkdown from 'react-markdown'
 import { getArticle } from '../../api/blog'
 import { Blog } from '../../store/articles/types'
@@ -26,7 +26,7 @@ class BlogContent extends Component<ComponentProps, IState> {
   async componentDidMount() {
     if (this.state.data === null) {
       let id = this.props.location.pathname.split('g/')[1]
-      let res = await getArticle(id, true)
+      let res = await getArticle(id, false)
       console.log(res)
       if (res.data) {
         this.setState({
@@ -61,11 +61,9 @@ class BlogContent extends Component<ComponentProps, IState> {
             <Icon type="tag" style={{ marginRight: '5px' }} />
             <Tag color="red">{data.category.name}</Tag>
             <Divider type="vertical" />
-            <Icon type="bars" style={{ marginRight: '5px' }} />
-            <Tag color="blue">{data.tags}</Tag>
           </div>
           <Divider />
-          <div>
+          <div style={{ textAlign: 'left' }}>
             <ReactMarkdown source={data!.content} rawSourcePos={true} escapeHtml={false} />
           </div>
         </Card>
@@ -73,10 +71,5 @@ class BlogContent extends Component<ComponentProps, IState> {
     )
   }
 }
-const mapState = () => {}
-const mapDispatch = {}
 
-export default connect(
-  mapState,
-  mapDispatch
-)(BlogContent)
+export default BlogContent

@@ -20,6 +20,7 @@ type PropFromDispatch = {
   fetchRequest: typeof fetchRequest
 }
 type ComponentProps = PropFromDispatch & RouteComponentProps & PropFromMap
+
 class Article extends Component<ComponentProps, IState> {
   constructor(props: ComponentProps) {
     super(props)
@@ -31,8 +32,10 @@ class Article extends Component<ComponentProps, IState> {
 
   async componentDidMount() {
     if (!this.props.data || this.props.data.length !== 0) {
-      await fetchRequest()
+      let res = await fetchRequest()
+      console.log(res)
     }
+    console.log(this.props.data)
     this.setState({
       show: true,
       isLoading: false
@@ -44,6 +47,7 @@ class Article extends Component<ComponentProps, IState> {
       return <Skeleton></Skeleton>
     }
     const { data } = this.props
+    console.log(data)
     return (
       <Skeleton loading={this.state.isLoading}>
         <Card className="articleWrapper">
@@ -51,12 +55,7 @@ class Article extends Component<ComponentProps, IState> {
             <Tag color="magenta">javascrpt</Tag>
             <List
               itemLayout="horizontal"
-              dataSource={data.filter((item: Blog, indx) => {
-                const { category } = item
-                if (category.hasOwnProperty('name')) {
-                  return category.name === 'javascript'
-                }
-              })}
+              dataSource={data.filter((item) => item.category.name === 'javascript')}
               renderItem={(item) => (
                 <List.Item>
                   <List.Item.Meta
@@ -73,7 +72,7 @@ class Article extends Component<ComponentProps, IState> {
             <Tag color="orange">css</Tag>
             <List
               itemLayout="horizontal"
-              dataSource={this.props.data.filter((item) => item.category.name === 'css')}
+              dataSource={data.filter((item: Blog) => item.category.name === 'css')}
               renderItem={(item) => (
                 <List.Item>
                   <List.Item.Meta
@@ -90,7 +89,7 @@ class Article extends Component<ComponentProps, IState> {
             <Tag color="orange">随笔</Tag>
             <List
               itemLayout="horizontal"
-              dataSource={this.props.data.filter((item) => item.category.name === 'note')}
+              dataSource={data.filter((item: Blog) => item.category.name === 'note')}
               renderItem={(item) => (
                 <List.Item>
                   <List.Item.Meta

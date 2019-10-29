@@ -34,14 +34,20 @@ class NormalLoginForm extends React.Component<componentPorps, IState> {
     this.props.form.validateFields(async (err, values) => {
       // 校验数据输入合法后,把得到的结果转化为字符串并加密,使用 userLogin 方法把数据发送到服务器上
       // 如果服务器返回登录的数据不为 null,即登录成功,此时把把服务器发送回来的 token 保存在 localStorage 中
-      let str = encrypt(JSON.stringify(values))
+
       if (!err) {
+        let { account, password } = values
+
+        let str = encrypt(JSON.stringify({ account, password }))
         let res = await userLogin({ key: str })
+        console.log(res)
         if (res.data.token) {
           localStorage.setItem(APP_TOKEN_KEY, res.data.token)
           this.props.setingVisible(false)
           message.success('登录成功')
           this.props.userLoginAction()
+        } else {
+          message.error(res.data.msg)
         }
       }
     })

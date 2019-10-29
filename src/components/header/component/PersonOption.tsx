@@ -37,7 +37,7 @@ class PersonOption extends Component<ComponentProps> {
         <Dropdown overlay={this.menu} trigger={['click']}>
           <Link to="/">
             <Icon type="down" />
-            晚上好,范剑峰
+            博客管理
           </Link>
         </Dropdown>
       </div>

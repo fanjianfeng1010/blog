@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
-import { Form, Button, Icon, Input, Checkbox, Select } from 'antd'
+import { Form, Button, Icon, Input, Select, message } from 'antd'
 import Editor from 'for-editor'
 import { FormComponentProps } from 'antd/lib/form'
-import { createArticle, getCategories, createCategory } from '../../api/blog'
+import { createArticle } from '../../api/blog'
 import { ApplicationState } from '../../store/inex'
 import { fetchRequest as fetchCategory } from '../../store/category/action'
 import { Category } from '../../store/category/types'
@@ -50,15 +50,18 @@ class BlogEditor extends Component<ComponentProps, EditorState> {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values)
         // 这里添加对 summary 的处理,把 contnet的一部分内容截取成为 summary 的一部分,方便渲染
         let { title, content, category } = values,
           summary = content.substr(0, 30)
+        // 传递信息给服务器
         let data = { title, content, summary, category }
         let res = await createArticle(data)
         if (res && res.data) {
           const articleId = res.data._id
-          this.props.history.push(`/blog/${articleId}`)
+          message.success('发表成功,即将为你跳转到详情页')
+          setTimeout(() => {
+            this.props.history.push(`/blog/${articleId}`)
+          }, 2000)
         }
       }
     })
