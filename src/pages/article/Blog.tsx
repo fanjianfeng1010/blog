@@ -27,7 +27,7 @@ class BlogContent extends Component<ComponentProps, IState> {
     if (this.state.data === null) {
       let id = this.props.location.pathname.split('g/')[1]
       let res = await getArticle(id, false)
-      console.log(res)
+
       if (res.data) {
         this.setState({
           loading: false,

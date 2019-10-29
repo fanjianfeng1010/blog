@@ -59,7 +59,6 @@ class Admin extends Component<ComponentProps, IState> {
 
   // 第四步删除操作
   handleClick = async () => {
-    console.log(this.state.deleteLoading)
     this.setState({
       deleteLoading: true
     })
@@ -93,7 +92,7 @@ class Admin extends Component<ComponentProps, IState> {
         })
       }
     }
-    console.log(this.state.articleIds)
+
     return (
       <div>
         <Spin spinning={this.state.deleteLoading}>

@@ -10,7 +10,6 @@ function* getCategory() {
     if (res.error) {
       yield put(fetchError(res.error))
     } else {
-      console.log(res.data)
       yield put(fetchSuccess(res.data))
     }
   } catch (err) {

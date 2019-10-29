@@ -13,7 +13,7 @@ export const deleteArticleById = (id: string) => axios.delete(`/api/article/${id
 export const batchDeleteArticle = (articleIds: string[]) => {
   // let ids = Qs.stringify(articleIds, { indices: false })
   // let articleIds = Qs.stringify(ids, { indices: false })
-  console.log(articleIds)
+
   return axios.delete('/api/articles', {
     data: { articleIds }
   })

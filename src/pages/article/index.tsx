@@ -32,10 +32,9 @@ class Article extends Component<ComponentProps, IState> {
 
   async componentDidMount() {
     if (!this.props.data || this.props.data.length !== 0) {
-      let res = await fetchRequest()
-      console.log(res)
+      await fetchRequest()
     }
-    console.log(this.props.data)
+
     this.setState({
       show: true,
       isLoading: false
@@ -47,7 +46,7 @@ class Article extends Component<ComponentProps, IState> {
       return <Skeleton></Skeleton>
     }
     const { data } = this.props
-    console.log(data)
+
     return (
       <Skeleton loading={this.state.isLoading}>
         <Card className="articleWrapper">

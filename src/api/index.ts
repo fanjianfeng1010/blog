@@ -2,11 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios'
 import Qs from 'qs'
 import { APP_TOKEN_KEY } from '../config/default.config'
 
-/**
- * 异常处理程序
- */
-
-axios.defaults.baseURL = 'http://127.0.0.1:2300'
+axios.defaults.baseURL = 'http://49.234.190.126:2300'
 axios.defaults.withCredentials = true
 axios.defaults.transformRequest = (data = {}) => {
   return Qs.stringify(data)
@@ -24,7 +20,7 @@ axios.interceptors.request.use(
     /*  if (config.method === 'delete') {
       config.headers['Content-Type'] = ''
      }*/
-    console.log(config)
+
     config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
     config.headers.authorization = token || ''
     return config

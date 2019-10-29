@@ -40,7 +40,7 @@ class NormalLoginForm extends React.Component<componentPorps, IState> {
 
         let str = encrypt(JSON.stringify({ account, password }))
         let res = await userLogin({ key: str })
-        console.log(res)
+
         if (res.data.token) {
           localStorage.setItem(APP_TOKEN_KEY, res.data.token)
           this.props.setingVisible(false)
